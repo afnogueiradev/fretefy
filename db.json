@@ -1,0 +1,22 @@
+{
+  "regioes": [
+    {
+      "id": "1",
+      "nome": "Sudeste",
+      "cidade": "São Paulo",
+      "ativa": true
+    },
+    {
+      "id": "2",
+      "nome": "Sul",
+      "cidade": "Curitiba",
+      "ativa": false
+    },
+    {
+      "id": "7eba",
+      "nome": "Nordeste",
+      "cidade": "Piauí",
+      "ativa": true
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+@if(!showform) {
+    <button class="btn btn-primary" (click)="showForm();">Cadastrar</button>
+}@else {
+    <button class="btn btn-danger" (click)="showForm();">Fechar</button>
+}
+
+<form (ngSubmit)="onSubmit();" *ngIf="showform">
+    <div>
+        <label for="text">Nome da Regiao</label>
+        <input type="text" 
+                name="text" 
+                class="form-control" 
+                placeholder="Nome da Regiao" 
+                id="nmRegiao" 
+                [(ngModel)]="nome">
+    </div>
+    <div class="mb-4">
+        <label for="cidade">Cidade</label>
+        <select name="cidade" id="nmCidade" class="form-select" [(ngModel)]="cidade">
+            <option value="">Selecione a cidade</option>
+            <option value="São Paulo">São Paulo</option>
+            <option value="Curitiba">Curitiba</option>
+            <option value="Bahia">Bahia</option>
+            <option value="Piauí">Piauí</option>
+            <option value="Santa Catarina">Santa Catarina</option>
+        </select>
+    </div>
+
+    <input type="submit" value="Adicionar" class="btn btn-secondary mb-4">
+</form>

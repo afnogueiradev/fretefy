@@ -1,0 +1,25 @@
+<!-- <p>{{regiao.nome}} -- {{regiao.cidade}}</p> -->
+<tr>
+    <td>
+        <p *ngIf="regiao.ativa === true; else disableImg"><img [ngStyle]="{'width': '30px'}" src="enable.png" alt="Regiao Ativa"></p>
+        <ng-template #disableImg>
+            <img [ngStyle]="{'width': '30px'}" src="disable.png" alt="Regiao Inativa">
+        </ng-template>
+    </td>
+    <td>{{regiao.nome}}</td>
+    <td>{{regiao.cidade}}</td>
+    <td class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        ...
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Editar</a></li>
+            <li *ngIf="regiao.ativa === true; else disableR"><a class="dropdown-item" >Desativar</a></li>
+            <ng-template #disableR>
+                <a class="dropdown-item" >Ativar</a>
+            </ng-template>
+            <li><a class="dropdown-item" (click)="onDelete(regiao)">Excluir</a></li>
+        </ul>
+        {{regiao.ativa}}
+    </td>
+</tr>

@@ -1,0 +1,79 @@
+
+<app-add-regiao (onAddRegiao)="AddRegiao($event);"></app-add-regiao>
+    <table class="table align-center" >
+        <thead>
+            <tr>
+                <th>Ativa</th>
+                <th>Nome da Região:</th>
+                <th>Cidade:</th>
+                <th>Ações:</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            <tr *ngFor="let regiao of regioes">
+                <td>
+                    <p *ngIf="regiao.ativa === true; else disableImg"><img [ngStyle]="{'width': '30px'}" src="enable.png" alt="Regiao Ativa"></p>
+                    <ng-template #disableImg>
+                        <img [ngStyle]="{'width': '30px'}" src="disable.png" alt="Regiao Inativa">
+                    </ng-template>
+                </td>
+                <td>{{regiao.nome}}</td>
+                <td>{{regiao.cidade}}</td>
+                <td class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    ...
+                    </button>
+                    <ul class="dropdown-menu">
+                        
+                        <li><a class="dropdown-item" (click)="selRegiao(regiao)" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</a></li>
+                        <li *ngIf="regiao.ativa === true; else disableR"><a class="dropdown-item" (click)="onChange(regiao);" >Desativar</a></li>
+                        <ng-template #disableR>
+                            <a class="dropdown-item" (click)="onChange(regiao);" >Ativar</a>
+                        </ng-template>
+                        <li><a class="dropdown-item" (click)="onDelete(regiao);">Excluir</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div>
+                    <label for="text">Nome da Regiao</label>
+                    <input type="text" 
+                            name="text" 
+                            class="form-control" 
+                            placeholder="Nome da Regiao" 
+                            id="nmRegiao" 
+                            value="{{nome}}">
+                </div>
+                <div class="mb-4">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" 
+                            name="text" 
+                            class="form-control" 
+                            placeholder="Nome da Regiao" 
+                            id="nmRegiao" 
+                            value="{{cidade}}">
+                </div>
+            
+                <input type="submit" value="Adicionar" class="btn btn-secondary mb-4">
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="onEdit();">Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div>
